@@ -1,7 +1,7 @@
 
 # WASM Runner - Containerless App Runner
 
-[![Build Status](https://github.com/yourorg/wasmrunner/workflows/CI/badge.svg)](https://github.com/yourorg/wasmrunner/actions)
+
 [![Coverage](https://codecov.io/gh/yourorg/wasmrunner/branch/main/graph/badge.svg)](https://codecov.io/gh/yourorg/wasmrunner)
 [![Rust Version](https://img.shields.io/badge/rust-1.75+-blue.svg)](https://www.rust-lang.org)
 [![Crates.io](https://img.shields.io/crates/v/wasmrunner.svg)](https://crates.io/crates/wasmrunner)
