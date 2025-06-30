@@ -1,0 +1,18 @@
+
+[package]
+name = "wasmrunner-sandbox"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+wasmrunner-core = { path = "../wasmrunner-core" }
+
+tokio.workspace = true
+anyhow.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+nix.workspace = true
+libc.workspace = true
+seccomp-sys.workspace = true

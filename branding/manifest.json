@@ -1,0 +1,19 @@
+
+{
+  "name": "WasmRunner",
+  "short_name": "WasmRunner",
+  "description": "Containerless WebAssembly application runner",
+  "version": "0.1.0",
+  "manifest_version": 2,
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#3B82F6",
+  "background_color": "#FFFFFF",
+  "start_url": "/",
+  "display": "standalone"
+}

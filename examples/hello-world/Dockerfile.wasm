@@ -1,0 +1,24 @@
+
+# Dockerfile.wasm for building WASM applications
+FROM rust:1.75 as builder
+
+# Install WASM target
+RUN rustup target add wasm32-wasi
+
+# Set working directory
+WORKDIR /app
+
+# Copy source code
+COPY . .
+
+# Build for WASM
+RUN cargo build --target wasm32-wasi --release
+
+# Final stage - just the WASM binary
+FROM scratch
+COPY --from=builder /app/target/wasm32-wasi/release/hello-world.wasm /app.wasm
+
+# Metadata
+LABEL wasmrunner.version="1.0"
+LABEL wasmrunner.entrypoint="/app.wasm"
+LABEL wasmrunner.description="Hello World WASM application"

@@ -1,0 +1,29 @@
+
+# WasmRunner Color Scheme
+# Customize these values to match your brand
+
+[primary]
+main = "#3B82F6"      # Blue-500
+light = "#60A5FA"     # Blue-400  
+dark = "#2563EB"      # Blue-600
+
+[secondary]
+main = "#6B7280"      # Gray-500
+light = "#9CA3AF"     # Gray-400
+dark = "#4B5563"      # Gray-600
+
+[accent]
+success = "#10B981"   # Emerald-500
+warning = "#F59E0B"   # Amber-500
+error = "#EF4444"     # Red-500
+info = "#3B82F6"      # Blue-500
+
+[background]
+primary = "#FFFFFF"   # White
+secondary = "#F9FAFB" # Gray-50
+tertiary = "#F3F4F6"  # Gray-100
+
+[text]
+primary = "#111827"   # Gray-900
+secondary = "#6B7280" # Gray-500
+muted = "#9CA3AF"     # Gray-400

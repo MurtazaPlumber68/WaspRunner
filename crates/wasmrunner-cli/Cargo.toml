@@ -1,0 +1,31 @@
+
+[package]
+name = "wasmrunner-cli"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "wasmrunner"
+path = "src/main.rs"
+
+[dependencies]
+wasmrunner-core = { path = "../wasmrunner-core" }
+wasmrunner-runtime = { path = "../wasmrunner-runtime" }
+wasmrunner-sandbox = { path = "../wasmrunner-sandbox" }
+wasmrunner-plugins = { path = "../wasmrunner-plugins" }
+wasmrunner-store = { path = "../wasmrunner-store" }
+
+clap.workspace = true
+tokio.workspace = true
+anyhow.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tracing.workspace = true
+tracing-subscriber.workspace = true
+dialoguer.workspace = true
+indicatif.workspace = true
+reqwest.workspace = true
+dirs = "5.0"
+uuid.workspace = true

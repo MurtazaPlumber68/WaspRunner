@@ -1,0 +1,56 @@
+
+# Example Dockerfile.wasm for building WASM applications
+# This demonstrates the build process for a Rust-based WASM app
+
+FROM rust:1.75 as builder
+
+# Install WASM target
+RUN rustup target add wasm32-wasi
+
+# Install wasm-opt for optimization
+RUN apt-get update && apt-get install -y binaryen
+
+# Set working directory
+WORKDIR /app
+
+# Copy dependency files first for better caching
+COPY Cargo.toml Cargo.lock ./
+
+# Create a dummy main to cache dependencies
+RUN mkdir src && echo "fn main() {}" > src/main.rs
+RUN cargo build --target wasm32-wasi --release
+RUN rm -rf src
+
+# Copy actual source code
+COPY src ./src
+
+# Build the actual application
+RUN cargo build --target wasm32-wasi --release
+
+# Optimize the WASM binary
+RUN wasm-opt -Oz --enable-bulk-memory \
+    target/wasm32-wasi/release/app.wasm \
+    -o target/wasm32-wasi/release/app-optimized.wasm
+
+# Final stage - minimal image with just the WASM binary
+FROM scratch
+
+# Copy the optimized WASM binary
+COPY --from=builder /app/target/wasm32-wasi/release/app-optimized.wasm /app.wasm
+
+# Metadata for WasmRunner
+LABEL wasmrunner.version="1.0"
+LABEL wasmrunner.entrypoint="/app.wasm"
+LABEL wasmrunner.description="Example WASM application"
+LABEL wasmrunner.author="Your Name <your.email@example.com>"
+LABEL wasmrunner.memory.limit="128MB"
+LABEL wasmrunner.cpu.limit="100%"
+LABEL wasmrunner.network="none"
+LABEL wasmrunner.filesystem="readonly"
+
+# Runtime configuration
+ENV RUST_LOG=info
+ENV APP_ENV=production
+
+# Default command (optional, can be overridden)
+CMD ["--help"]

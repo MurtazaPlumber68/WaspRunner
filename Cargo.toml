@@ -1,0 +1,60 @@
+
+[workspace]
+members = [
+    "crates/wasmrunner-cli",
+    "crates/wasmrunner-core",
+    "crates/wasmrunner-runtime",
+    "crates/wasmrunner-sandbox",
+    "crates/wasmrunner-plugins",
+    "crates/wasmrunner-store",
+    "examples/hello-world",
+    "examples/http-service",
+    "examples/db-plugin"
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["WasmRunner Team <team@wasmrunner.dev>"]
+license = "MIT"
+repository = "https://github.com/yourorg/wasmrunner"
+homepage = "https://wasmrunner.dev"
+
+[workspace.dependencies]
+# Core dependencies
+tokio = { version = "1.0", features = ["full"] }
+anyhow = "1.0"
+thiserror = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+uuid = { version = "1.0", features = ["v4"] }
+tracing = "0.1"
+tracing-subscriber = "0.3"
+dirs = "5.0"
+
+# CLI dependencies
+clap = { version = "4.0", features = ["derive"] }
+dialoguer = "0.10"
+indicatif = "0.17"
+
+# WASM runtimes
+wasmtime = "15.0"
+wasmer = "4.2"
+# wasmedge-sdk = "0.12"
+
+# Security & sandboxing
+nix = "0.27"
+libc = "0.2"
+seccomp-sys = "0.2"
+
+# Networking & storage
+reqwest = { version = "0.11", features = ["json"] }
+sqlx = { version = "0.7", features = ["sqlite", "runtime-tokio-rustls"] }
+
+# Crypto & validation
+sha2 = "0.10"
+ed25519-dalek = "2.0"
+
+# Configuration
+toml = "0.8"
+config = "0.13"
